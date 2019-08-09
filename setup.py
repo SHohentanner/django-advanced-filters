@@ -34,9 +34,9 @@ def get_full_description():
     readme = 'README.rst'
     changelog = 'CHANGELOG.rst'
     base = os.path.dirname(__file__)
-    with open(os.path.join(base, readme)) as readme:
+    with open(os.path.join(base, readme), encoding="utf8") as readme:
         README = readme.read()
-    with open(os.path.join(base, changelog)) as changelog:
+    with open(os.path.join(base, changelog), encoding="utf8") as changelog:
         CHANGELOG = changelog.read()
     return '%s\n%s' % (README, CHANGELOG)
 
@@ -46,7 +46,7 @@ CUR_DIR = os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir))
 os.chdir(CUR_DIR)
 TEST_REQ_FILE = os.path.join(CUR_DIR, 'test-reqs.txt')
 if os.path.exists(TEST_REQ_FILE):
-    with open(TEST_REQ_FILE) as f:
+    with open(TEST_REQ_FILE, encoding="utf8") as f:
         TEST_REQS = list(f.readlines())
 else:
     TEST_REQS = []
