@@ -3,6 +3,8 @@ from pprint import pformat
 import logging
 import operator
 
+from six.moves import range, reduce
+
 from django import forms
 
 from django.apps import apps
@@ -15,7 +17,6 @@ from django.db.models.fields import DateField
 from django.forms.formsets import formset_factory, BaseFormSet
 from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
-from django.utils.six.moves import range, reduce
 from django.utils.text import capfirst
 
 import django
