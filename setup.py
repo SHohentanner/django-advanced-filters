@@ -47,7 +47,7 @@ CUR_DIR = os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir))
 os.chdir(CUR_DIR)
 TEST_REQ_FILE = os.path.join(CUR_DIR, 'test-reqs.txt')
 if os.path.exists(TEST_REQ_FILE):
-    with open(TEST_REQ_FILE) as f:
+    with io.open(TEST_REQ_FILE, encoding="utf-8") as f:
         TEST_REQS = list(f.readlines())
 else:
     TEST_REQS = []
@@ -66,6 +66,7 @@ setup(
     install_requires=[
         'django-braces>=1.4.0,<=1.14.0',
         'simplejson>=3.6.5,<4',
+        'six==1.15.0'
     ],
     extras_require=dict(test=TEST_REQS),
     zip_safe=False,
