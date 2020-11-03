@@ -1,9 +1,10 @@
-from setuptools.command.test import test as TestCommand
-from setuptools import setup, find_packages
+import io
 import os
 import sys
 
 from advanced_filters import __version__
+from setuptools import find_packages, setup
+from setuptools.command.test import test as TestCommand
 
 
 class Tox(TestCommand):
@@ -34,9 +35,9 @@ def get_full_description():
     readme = 'README.rst'
     changelog = 'CHANGELOG.rst'
     base = os.path.dirname(__file__)
-    with open(os.path.join(base, readme), encoding="utf8") as readme:
+    with io.open(os.path.join(base, readme), encoding='utf-8') as readme:
         README = readme.read()
-    with open(os.path.join(base, changelog), encoding="utf8") as changelog:
+    with io.open(os.path.join(base, changelog), encoding='utf-8') as changelog:
         CHANGELOG = changelog.read()
     return '%s\n%s' % (README, CHANGELOG)
 
@@ -46,7 +47,7 @@ CUR_DIR = os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir))
 os.chdir(CUR_DIR)
 TEST_REQ_FILE = os.path.join(CUR_DIR, 'test-reqs.txt')
 if os.path.exists(TEST_REQ_FILE):
-    with open(TEST_REQ_FILE, encoding="utf8") as f:
+    with open(TEST_REQ_FILE) as f:
         TEST_REQS = list(f.readlines())
 else:
     TEST_REQS = []
@@ -63,9 +64,8 @@ setup(
     packages=find_packages(exclude=['tests*', 'tests.*', '*.tests']),
     include_package_data=True,
     install_requires=[
-        'django-braces>=1.4.0,<2',
+        'django-braces>=1.4.0,<=1.14.0',
         'simplejson>=3.6.5,<4',
-        'six==1.13.0'
     ],
     extras_require=dict(test=TEST_REQS),
     zip_safe=False,
@@ -81,8 +81,19 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.2',
-        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Framework :: Django',
+        'Framework :: Django :: 1.9',
+        'Framework :: Django :: 1.10',
+        'Framework :: Django :: 1.11',
+        'Framework :: Django :: 2.0',
+        'Framework :: Django :: 2.1',
+        'Framework :: Django :: 2.2',
+        'Framework :: Django :: 3.0',
+        'Framework :: Django :: 3.1',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],

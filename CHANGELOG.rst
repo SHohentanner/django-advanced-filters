@@ -1,6 +1,85 @@
 Changelog
 =========
 
+1.2.0 - Django 3 and more
+-------------------------
+
+It's finally time to drop the dirty old rags and don some fresh colors.
+
+Thanks to effort from multiple contributors, this version includes support
+for newest Django version.
+
+Breaking Changes
+~~~~~~~~~~~~~~~~
+
+* Add support for Django 2.2 and 3.0
+* Drop support for Django < 1.9
+* Drop support for Python 3.3-3.4
+
+*django-advanced-filters now support only* **python 2.7, and 3.5 - 3.8.**
+
+Features
+~~~~~~~~
+
+- Switch deprecated force_text to force_str (Merge 0427d11)
+
+Bug fixes
+~~~~~~~~~
+
+- Avoid installing newer braces (Merge 0427d11)
+- Allow choices sort on None fields (Merge 142ecd0)
+
+Docs / Tests
+~~~~~~~~~~~~
+
+- Update dependencies stated in the README
+- Refactor some unittest test cases into pytest (Merge 41271b7)
+- Test the CleanWhiteSpacesMixin helper
+
+Misc
+~~~~
+
+- Update requirements for new test deps matrix (Merge 0427d11)
+- Replace deprecated assertEquals (Merge 41271b7)
+- Replace deprecated logger.warn with warning (Merge 41271b7)
+- Bump test dependencies (Merge 41271b7)
+- Update python and add Django classifiers
+
+
+Contributors
+~~~~~~~~~~~~
+
+- Petr Dlouhý
+- Alon Raizman
+- Hugo Maingonnat
+- Arpit
+- Pavel Savchenko
+
+
+1.1.1 - CHANGELOG rendering is hard
+-----------------------------------
+
+This release is for fixing the bug when installing with specific environment (
+locale that defaults to CP-1252).
+
+Bug fixes
+~~~~~~~~~
+
+- Add encoding='utf-8' to open() in setup.py (Merge 2fe81aa)
+
+Docs / Other
+~~~~~~~~~~~~
+
+- add CONTRIBUTING.rst with common processes (Merge ee7907e)
+- Update issue templates (Merge ee7907e)
+
+Contributors
+~~~~~~~~~~~~
+
+- Rebecca Turner
+- Pavel Savchenko
+
+
 1.1.0 - The future is bright
 ----------------------------
 

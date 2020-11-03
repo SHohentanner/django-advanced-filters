@@ -3,11 +3,11 @@ import re
 
 from django import forms
 
-from six import string_types
+import six
 
 logger = logging.getLogger('advanced_filters.form_helpers')
 
-extra_spaces_pattern = re.compile('\s+')
+extra_spaces_pattern = re.compile(r'\s+')
 
 
 class VaryingTypeCharField(forms.CharField):
@@ -57,7 +57,7 @@ class CleanWhiteSpacesMixin(object):
         """
         cleaned_data = super(CleanWhiteSpacesMixin, self).clean()
         for k in self.cleaned_data:
-            if isinstance(self.cleaned_data[k], string_types):
+            if isinstance(self.cleaned_data[k], six.string_types):
                 cleaned_data[k] = re.sub(extra_spaces_pattern, ' ',
                                          self.cleaned_data[k] or '').strip()
         return cleaned_data
